@@ -2,14 +2,35 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
-import { viteSingleFile } from 'vite-plugin-singlefile';
+import { VitePWA } from 'vite-plugin-pwa';
+// import { viteSingleFile } from 'vite-plugin-singlefile';
 
 export default defineConfig(() => {
   return {
+    base: process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : '/',
     plugins: [
       react(), 
       tailwindcss(),
-      viteSingleFile(),
+      VitePWA({
+        registerType: 'autoUpdate',
+        includeAssets: ['icon.svg'],
+        manifest: {
+          name: 'Arrastar na Geografia',
+          short_name: 'Geografia',
+          description: 'Jogo educacional de geografia para celular.',
+          theme_color: '#1d4ed8',
+          background_color: '#ffffff',
+          display: 'standalone',
+          icons: [
+            {
+              src: 'icon.svg',
+              sizes: 'any',
+              type: 'image/svg+xml'
+            }
+          ]
+        }
+      })
+      // viteSingleFile(),
     ],
     resolve: {
       alias: {
