@@ -1,0 +1,6 @@
+{
+  "name": "Arrastar na Geografia",
+  "description": "Um jogo educacional interativo de arrastar e soltar para aprender conceitos de geografia, projetado para celular.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
